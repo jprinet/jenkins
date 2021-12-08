@@ -1,0 +1,22 @@
+<gradleEnterprise>
+<!--    <server>-->
+<!--        <url>http://localhost:5086</url>-->
+<!--        <allowUntrusted>true</allowUntrusted>-->
+<!--    </server>-->
+    <buildScan>
+        <publish>ALWAYS</publish>
+        <termsOfService>
+            <url>https://gradle.com/terms-of-service</url>
+            <accept>true</accept>
+        </termsOfService>
+        <capture>
+            <goalInputFiles>true</goalInputFiles>
+            <buildLogging>false</buildLogging>
+        </capture>
+    </buildScan>
+    <buildCache>
+        <local>
+            <enabled>false</enabled>
+        </local>
+    </buildCache>
+</gradleEnterprise>
