@@ -1,8 +1,9 @@
 <gradleEnterprise>
-<!--    <server>-->
-<!--        <url>http://localhost:5086</url>-->
+    <server>
+        <url>https://e.grdev.net</url>
+        <!--        <url>http://localhost:5086</url>-->
 <!--        <allowUntrusted>true</allowUntrusted>-->
-<!--    </server>-->
+    </server>
     <buildScan>
         <publish>ALWAYS</publish>
         <termsOfService>
@@ -16,7 +17,10 @@
     </buildScan>
     <buildCache>
         <local>
-            <enabled>false</enabled>
+            <enabled>true</enabled>
         </local>
+        <remote>
+            <enabled>false</enabled>
+        </remote>
     </buildCache>
 </gradleEnterprise>
