@@ -907,6 +907,65 @@ THE SOFTWARE.
                     </executions>
                   </plugin>
 
+                  <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-enforcer-plugin</artifactId>
+                    <executions>
+                      <execution>
+                        <id>enforce-banned-dependencies</id>
+                          <inputs>
+                            <properties>
+                              <property><name>commandLineRules</name></property>
+                              <property><name>fail</name></property>
+                              <property><name>failFast</name></property>
+                              <property><name>ignoreCache</name></property>
+                              <property><name>skip</name></property>
+                            </properties>
+                            <ignoredProperties>
+                              <ignore>session</ignore>
+                              <ignore>project</ignore>
+                              <ignore>mojoExecution</ignore>
+                            </ignoredProperties>
+                          </inputs>
+                          <iteratedProperties>
+                            <property>
+                              <name>rules</name>
+                              <inputs>
+                                <properties>
+                                  <property><name>includes</name></property>
+                                  <property><name>excludes</name></property>
+                                  <property><name>searchTransitive</name></property>
+                                  <property><name>message</name></property>
+                                </properties>
+                              </inputs>
+                            </property>
+                          </iteratedProperties>
+                          <nestedProperties>
+                            <property>
+                              <name>project</name>
+                              <iteratedProperties>
+                                <property>
+                                  <name>dependencies</name>
+                                  <inputs>
+                                    <properties>
+                                      <property><name>groupId</name></property>
+                                      <property><name>artifactId</name></property>
+                                      <property><name>version</name></property>
+                                      <property><name>type</name></property>
+                                      <property><name>scope</name></property>
+                                    </properties>
+                                  </inputs>
+                                </property>
+                              </iteratedProperties>
+                            </property>
+                          </nestedProperties>
+                          <outputs>
+                            <cacheableBecause>banned dependency check should run when dependencies change</cacheableBecause>
+                          </outputs>
+                        </execution>
+                    </executions>
+                  </plugin>
+
                 </plugins>
             </gradleEnterprise>
           </configuration>
