@@ -966,7 +966,62 @@ THE SOFTWARE.
                     </executions>
                   </plugin>
 
-                </plugins>
+                  <plugin>
+                      <groupId>com.cloudbees</groupId>
+                      <artifactId>maven-license-plugin</artifactId>
+                      <executions>
+                          <execution>
+                              <id>default</id>
+                              <inputs>
+                                  <fileSets>
+                                    <fileSet>
+                                      <name>src</name>
+                                      <paths>
+                                        <path>src</path>
+                                      </paths>
+                                      <normalization>CLASSPATH</normalization>
+                                    </fileSet>
+                                    <fileSet>
+                                      <name>script</name>
+                                    </fileSet>
+                                    <fileSet>
+                                      <name>inlineScript</name>
+                                    </fileSet>
+                                    <fileSet>
+                                      <name>generateLicenseXml</name>
+                                    </fileSet>
+                                    <fileSet>
+                                      <name>generateLicenseHtml</name>
+                                    </fileSet>
+                                  </fileSets>
+                                  <properties>
+                                      <property><name>requireCompleteLicenseInfo</name></property>
+                                      <property><name>disableCheck</name></property>
+                                      <property><name>attach</name></property>
+                                  </properties>
+                                  <ignoredProperties>
+                                      <ignore>project</ignore>
+                                      <ignore>localRepository</ignore>
+                                  </ignoredProperties>
+                              </inputs>
+                              <outputs>
+                                <files>
+                                  <file>
+                                    <name>xmlOutputFile</name>
+                                    <path>${project.build.directory}/classes/META-INF/licenses.xml</path>
+                                  </file>
+                                    <file>
+                                        <name>xmlOutputFile</name>
+                                        <path>${project.build.directory}/classes/META-INF/licenses.html</path>
+                                    </file>
+                                </files>
+                                <cacheableBecause>check should only run when inputs change</cacheableBecause>
+                              </outputs>
+                          </execution>
+                      </executions>
+                  </plugin>
+
+              </plugins>
             </gradleEnterprise>
           </configuration>
         </plugin>
