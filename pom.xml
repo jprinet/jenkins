@@ -26,10 +26,14 @@ THE SOFTWARE.
   <modelVersion>4.0.0</modelVersion>
 
   <parent>
-    <groupId>org.jenkins-ci</groupId>
-    <artifactId>jenkins</artifactId>
-    <version>1.69</version>
-    <relativePath />
+<!--    <groupId>org.jenkins-ci</groupId>-->
+<!--    <artifactId>jenkins</artifactId>-->
+<!--    <version>1.69</version>-->
+<!--    <relativePath />-->
+          <groupId>org.jenkins-ci</groupId>
+          <artifactId>custom-parent</artifactId>
+          <version>0.0.1</version>
+          <relativePath>custom-parent</relativePath>
   </parent>
 
   <groupId>org.jenkins-ci.main</groupId>
@@ -524,6 +528,206 @@ THE SOFTWARE.
             </execution>
           </executions>
         </plugin>
+
+        <plugin>
+          <groupId>com.gradle</groupId>
+          <artifactId>gradle-enterprise-maven-extension</artifactId>
+          <configuration>
+            <gradleEnterprise>
+              <plugins>
+                <plugin>
+                  <groupId>com.github.spotbugs</groupId>
+                  <artifactId>spotbugs-maven-plugin</artifactId>
+                  <executions>
+                    <execution>
+                      <id>spotbugs</id>
+                      <inputs>
+                        <fileSets>
+                          <fileSet>
+                            <name>classFilesDirectory</name>
+<!--                            <excludes>-->
+<!--                              <exclude>**/*.stapler</exclude>-->
+<!--                              <exclude>**/*.javadoc</exclude>-->
+<!--                            </excludes>-->
+<!--                            <normalization>CLASSPATH</normalization>-->
+                          </fileSet>
+                          <fileSet>
+                            <name>testClassFilesDirectory</name>
+<!--                            <excludes>-->
+<!--                              <exclude>**/*.stapler</exclude>-->
+<!--                              <exclude>**/*.javadoc</exclude>-->
+<!--                            </excludes>-->
+<!--                            <normalization>CLASSPATH</normalization>-->
+                          </fileSet>
+                        </fileSets>
+                        <properties>
+                          <property><name>skip</name></property>
+                          <property><name>xmlOutput</name></property>
+                          <property><name>includeTests</name></property>
+                          <property><name>addSourceDirs</name></property>
+                          <property><name>xmlEncoding</name></property>
+                          <property><name>sourceEncoding</name></property>
+                          <property><name>threshold</name></property>
+                          <property><name>effort</name></property>
+                          <property><name>relaxed</name></property>
+                          <property><name>visitors</name></property>
+                          <property><name>omitVisitors</name></property>
+                          <property><name>pluginList</name></property>
+                          <property><name>onlyAnalyze</name></property>
+                          <property><name>nested</name></property>
+                          <property><name>maxRank</name></property>
+                          <property><name>failOnError</name></property>
+                          <property><name>skipEmptyReport</name></property>
+                          <property><name>userPrefs</name></property>
+                          <property><name>sarifOutput</name></property>
+                          <property><name>sarifFullPath</name></property>
+                          <property><name>systemPropertyVariables</name></property>
+                          <property><name>includeFilterFile</name></property>
+                          <property><name>excludeFilterFile</name></property>
+                          <property><name>excludeBugsFile</name></property>
+                        </properties>
+                        <ignoredProperties>
+                          <ignore>debug</ignore>
+                          <ignore>trace</ignore>
+                          <ignore>fork</ignore>
+                          <ignore>maxHeap</ignore>
+                          <ignore>timeout</ignore>
+                          <ignore>jvmArgs</ignore>
+                          <ignore>spotbugsXmlOutput</ignore>
+                          <ignore>compileSourceRoots</ignore>
+                          <ignore>testSourceRoots</ignore>
+                          <ignore>remoteRepositories</ignore>
+                          <ignore>localRepository</ignore>
+                          <ignore>remoteArtifactRepositories</ignore>
+                          <ignore>pluginArtifacts</ignore>
+                          <ignore>session</ignore>
+                          <ignore>plugins</ignore>
+                          <ignore>xmlOutputDirectory</ignore>
+                          <ignore>spotbugsXmlOutputDirectory</ignore>
+                          <ignore>spotbugsXmlOutputFilename</ignore>
+                          <ignore>xrefLocation</ignore>
+                          <ignore>xrefTestLocation</ignore>
+                        </ignoredProperties>
+                      </inputs>
+                      <outputs>
+                        <files>
+                          <file>
+                            <name>xmlOutputFile</name>
+                            <path>${project.build.directory}/spotbugs.xml</path>
+                          </file>
+                          <file>
+                            <name>spotbugsXmlOutputFile</name>
+                            <path>${project.build.directory}/spotbugsXml.xml</path>
+                          </file>
+                        </files>
+                      <cacheableBecause>check should only run when inputs change</cacheableBecause>
+                      </outputs>
+                    </execution>
+                      <execution>
+                          <id>spotbugs-violations</id>
+                          <inputs>
+                              <fileSets>
+                                  <fileSet>
+                                      <name>classFilesDirectory</name>
+                                      <!--                            <excludes>-->
+                                      <!--                              <exclude>**/*.stapler</exclude>-->
+                                      <!--                              <exclude>**/*.javadoc</exclude>-->
+                                      <!--                            </excludes>-->
+                                      <!--                            <normalization>CLASSPATH</normalization>-->
+                                  </fileSet>
+                                  <fileSet>
+                                      <name>testClassFilesDirectory</name>
+                                      <!--                            <excludes>-->
+                                      <!--                              <exclude>**/*.stapler</exclude>-->
+                                      <!--                              <exclude>**/*.javadoc</exclude>-->
+                                      <!--                            </excludes>-->
+                                      <!--                            <normalization>CLASSPATH</normalization>-->
+                                  </fileSet>
+                              </fileSets>
+                              <properties>
+                                  <property><name>skip</name></property>
+                                  <property><name>xmlOutput</name></property>
+                                  <property><name>includeTests</name></property>
+                                  <!--                          <property><name>addSourceDirs</name></property>-->
+                                  <property><name>xmlEncoding</name></property>
+                                  <property><name>sourceEncoding</name></property>
+                                  <property><name>threshold</name></property>
+                                  <property><name>effort</name></property>
+                                  <property><name>relaxed</name></property>
+                                  <property><name>visitors</name></property>
+                                  <property><name>omitVisitors</name></property>
+                                  <property><name>pluginList</name></property>
+                                  <property><name>onlyAnalyze</name></property>
+                                  <property><name>nested</name></property>
+                                  <property><name>maxRank</name></property>
+                                  <property><name>failOnError</name></property>
+                                  <!--                          <property><name>skipEmptyReport</name></property>-->
+                                  <!--                          <property><name>userPrefs</name></property>-->
+                                  <!--                          <property><name>sarifOutput</name></property>-->
+                                  <!--                          <property><name>sarifFullPath</name></property>-->
+                                  <!--                          <property><name>systemPropertyVariables</name></property>-->
+                                  <property><name>includeFilterFile</name></property>
+                                  <property><name>excludeFilterFile</name></property>
+                                  <property><name>excludeBugsFile</name></property>
+
+                                  <property><name>failThreshold</name></property>
+                                  <property><name>maxAllowedViolations</name></property>
+                                  <property><name>outputEncoding</name></property>
+
+                              </properties>
+                              <ignoredProperties>
+                                  <ignore>debug</ignore>
+                                  <ignore>trace</ignore>
+                                  <ignore>fork</ignore>
+                                  <ignore>maxHeap</ignore>
+                                  <ignore>timeout</ignore>
+                                  <ignore>jvmArgs</ignore>
+                                  <ignore>spotbugsXmlOutput</ignore>
+                                  <ignore>compileSourceRoots</ignore>
+                                  <ignore>testSourceRoots</ignore>
+                                  <!--                          <ignore>remoteRepositories</ignore>-->
+                                  <ignore>localRepository</ignore>
+                                  <ignore>remoteArtifactRepositories</ignore>
+                                  <ignore>pluginArtifacts</ignore>
+                                  <ignore>session</ignore>
+                                  <!--                          <ignore>plugins</ignore>-->
+                                  <ignore>xmlOutputDirectory</ignore>
+                                  <ignore>spotbugsXmlOutputDirectory</ignore>
+                                  <ignore>spotbugsXmlOutputFilename</ignore>
+                                  <ignore>xrefLocation</ignore>
+                                  <ignore>xrefTestLocation</ignore>
+
+                                  <ignore>project</ignore>
+                              </ignoredProperties>
+                          </inputs>
+                          <outputs>
+                              <directories>
+                                  <directory>
+                                      <name>outputDirectory</name>
+                                      <path>${project.build.directory}</path>
+                                  </directory>
+                              </directories>
+                              <files>
+                                  <file>
+                                      <name>xmlOutputFile</name>
+                                      <path>${project.build.directory}/spotbugs.xml</path>
+                                  </file>
+                                  <file>
+                                      <name>spotbugsXmlOutputFile</name>
+                                      <path>${project.build.directory}/spotbugsXml.xml</path>
+                                  </file>
+                              </files>
+                              <cacheableBecause>check should only run when inputs change</cacheableBecause>
+                          </outputs>
+                      </execution>
+                  </executions>
+                </plugin>
+              </plugins>
+            </gradleEnterprise>
+          </configuration>
+        </plugin>
+
+
       </plugins>
     </pluginManagement>
 
