@@ -610,90 +610,87 @@ THE SOFTWARE.
                             <path>${project.build.directory}/spotbugsXml.xml</path>
                           </file>
                         </files>
-                      <cacheableBecause>check should only run when inputs change</cacheableBecause>
+                        <cacheableBecause>check should only run when inputs change</cacheableBecause>
                       </outputs>
                     </execution>
-                      <execution>
-                          <id>spotbugs-violations</id>
-                          <inputs>
-                              <fileSets>
-                                  <fileSet>
-                                      <name>classFilesDirectory</name>
-                                  </fileSet>
-                                  <fileSet>
-                                      <name>testClassFilesDirectory</name>
-                                  </fileSet>
-                              </fileSets>
-                              <properties>
-                                  <property><name>skip</name></property>
-                                  <property><name>xmlOutput</name></property>
-                                  <property><name>includeTests</name></property>
-                                  <property><name>xmlEncoding</name></property>
-                                  <property><name>sourceEncoding</name></property>
-                                  <property><name>threshold</name></property>
-                                  <property><name>effort</name></property>
-                                  <property><name>relaxed</name></property>
-                                  <property><name>visitors</name></property>
-                                  <property><name>omitVisitors</name></property>
-                                  <property><name>pluginList</name></property>
-                                  <property><name>onlyAnalyze</name></property>
-                                  <property><name>nested</name></property>
-                                  <property><name>maxRank</name></property>
-                                  <property><name>failOnError</name></property>
-                                  <property><name>includeFilterFile</name></property>
-                                  <property><name>excludeFilterFile</name></property>
-                                  <property><name>excludeBugsFile</name></property>
-
-                                  <property><name>failThreshold</name></property>
-                                  <property><name>maxAllowedViolations</name></property>
-                                  <property><name>outputEncoding</name></property>
-                              </properties>
-                              <ignoredProperties>
-                                  <ignore>debug</ignore>
-                                  <ignore>trace</ignore>
-                                  <ignore>fork</ignore>
-                                  <ignore>maxHeap</ignore>
-                                  <ignore>timeout</ignore>
-                                  <ignore>jvmArgs</ignore>
-                                  <ignore>spotbugsXmlOutput</ignore>
-                                  <ignore>compileSourceRoots</ignore>
-                                  <ignore>testSourceRoots</ignore>
-                                  <ignore>localRepository</ignore>
-                                  <ignore>remoteArtifactRepositories</ignore>
-                                  <ignore>pluginArtifacts</ignore>
-                                  <ignore>session</ignore>
-                                  <ignore>xmlOutputDirectory</ignore>
-                                  <ignore>spotbugsXmlOutputDirectory</ignore>
-                                  <ignore>spotbugsXmlOutputFilename</ignore>
-                                  <ignore>xrefLocation</ignore>
-                                  <ignore>xrefTestLocation</ignore>
-                                  <ignore>project</ignore>
-                              </ignoredProperties>
-                          </inputs>
-                          <outputs>
-                              <directories>
-                                  <directory>
-                                      <name>outputDirectory</name>
-                                      <path>${project.build.directory}</path>
-                                  </directory>
-                              </directories>
-                              <files>
-                                  <file>
-                                      <name>xmlOutputFile</name>
-                                      <path>${project.build.directory}/spotbugs.xml</path>
-                                  </file>
-                                  <file>
-                                      <name>spotbugsXmlOutputFile</name>
-                                      <path>${project.build.directory}/spotbugsXml.xml</path>
-                                  </file>
-                              </files>
-                              <cacheableBecause>check should only run when inputs change</cacheableBecause>
-                          </outputs>
-                      </execution>
+                    <execution>
+                      <id>spotbugs-violations</id>
+                      <inputs>
+                        <fileSets>
+                          <fileSet>
+                            <name>classFilesDirectory</name>
+                          </fileSet>
+                          <fileSet>
+                            <name>testClassFilesDirectory</name>
+                          </fileSet>
+                        </fileSets>
+                        <properties>
+                          <property><name>skip</name></property>
+                          <property><name>xmlOutput</name></property>
+                          <property><name>includeTests</name></property>
+                          <property><name>xmlEncoding</name></property>
+                          <property><name>sourceEncoding</name></property>
+                          <property><name>threshold</name></property>
+                          <property><name>effort</name></property>
+                          <property><name>relaxed</name></property>
+                          <property><name>visitors</name></property>
+                          <property><name>omitVisitors</name></property>
+                          <property><name>pluginList</name></property>
+                          <property><name>onlyAnalyze</name></property>
+                          <property><name>nested</name></property>
+                          <property><name>maxRank</name></property>
+                          <property><name>failOnError</name></property>
+                          <property><name>includeFilterFile</name></property>
+                          <property><name>excludeFilterFile</name></property>
+                          <property><name>excludeBugsFile</name></property>
+                          <property><name>failThreshold</name></property>
+                          <property><name>maxAllowedViolations</name></property>
+                          <property><name>outputEncoding</name></property>
+                        </properties>
+                        <ignoredProperties>
+                          <ignore>debug</ignore>
+                          <ignore>trace</ignore>
+                          <ignore>fork</ignore>
+                          <ignore>maxHeap</ignore>
+                          <ignore>timeout</ignore>
+                          <ignore>jvmArgs</ignore>
+                          <ignore>spotbugsXmlOutput</ignore>
+                          <ignore>compileSourceRoots</ignore>
+                          <ignore>testSourceRoots</ignore>
+                          <ignore>localRepository</ignore>
+                          <ignore>remoteArtifactRepositories</ignore>
+                          <ignore>pluginArtifacts</ignore>
+                          <ignore>session</ignore>
+                          <ignore>xmlOutputDirectory</ignore>
+                          <ignore>spotbugsXmlOutputDirectory</ignore>
+                          <ignore>spotbugsXmlOutputFilename</ignore>
+                          <ignore>xrefLocation</ignore>
+                          <ignore>xrefTestLocation</ignore>
+                          <ignore>project</ignore>
+                        </ignoredProperties>
+                      </inputs>
+                      <outputs>
+                        <directories>
+                          <directory>
+                            <name>outputDirectory</name>
+                            <path>${project.build.directory}</path>
+                          </directory>
+                        </directories>
+                        <files>
+                          <file>
+                            <name>xmlOutputFile</name>
+                            <path>${project.build.directory}/spotbugs.xml</path>
+                          </file>
+                          <file>
+                            <name>spotbugsXmlOutputFile</name>
+                            <path>${project.build.directory}/spotbugsXml.xml</path>
+                          </file>
+                        </files>
+                        <cacheableBecause>check should only run when inputs change</cacheableBecause>
+                      </outputs>
+                    </execution>
                   </executions>
                 </plugin>
-
-
 
                 <plugin>
                   <groupId>com.github.eirslett</groupId>
@@ -716,7 +713,6 @@ THE SOFTWARE.
                           <property><name>nodeVersion</name></property>
                           <property><name>yarnVersion</name></property>
                           <property><name>serverId</name></property>
-
                           <property><name>skipTests</name></property>
                           <property><name>testFailureIgnore</name></property>
                           <property><name>testFailureIgnore</name></property>
@@ -749,10 +745,10 @@ THE SOFTWARE.
                         <inputs>
                           <fileSets>
                             <fileSet>
-                                <name>workingDirectory</name>
+                              <name>workingDirectory</name>
                             </fileSet>
                               <fileSet>
-                                  <name>installDirectory</name>
+                                <name>installDirectory</name>
                               </fileSet>
                           </fileSets>
                           <properties>
@@ -775,12 +771,12 @@ THE SOFTWARE.
                         <outputs>
                           <directories>
                             <directory>
-                                <name>nodeOutputDirectory</name>
-                                <path>node</path>
+                              <name>nodeOutputDirectory</name>
+                              <path>node</path>
                             </directory>
                               <directory>
-                                  <name>nodeModulesOutputDirectory</name>
-                                  <path>node_modules</path>
+                                <name>nodeModulesOutputDirectory</name>
+                                <path>node_modules</path>
                               </directory>
                           </directories>
                           <cacheableBecause>check should only run when inputs change</cacheableBecause>
@@ -789,49 +785,129 @@ THE SOFTWARE.
                       <execution>
                           <id>yarn build</id>
                           <inputs>
-                              <fileSets>
-                                  <fileSet>
-                                      <name>workingDirectory</name>
-                                  </fileSet>
-                                  <fileSet>
-                                      <name>installDirectory</name>
-                                  </fileSet>
-                              </fileSets>
-                              <properties>
-                                  <property><name>arguments</name></property>
-                                  <property><name>yarnInheritsProxyConfigFromMaven</name></property>
-                                  <property><name>npmRegistryURL</name></property>
-                                  <property><name>skipTests</name></property>
-                                  <property><name>testFailureIgnore</name></property>
-                                  <property><name>testFailureIgnore</name></property>
-                                  <property><name>environmentVariables</name></property>
-                                  <property><name>skip</name></property>
-                              </properties>
-                              <ignoredProperties>
-                                  <ignore>project</ignore>
-                                  <ignore>execution</ignore>
-                                  <ignore>session</ignore>
-                                  <ignore>repositorySystemSession</ignore>
-                              </ignoredProperties>
+                            <fileSets>
+                              <fileSet>
+                                <name>workingDirectory</name>
+                              </fileSet>
+                              <fileSet>
+                                <name>installDirectory</name>
+                              </fileSet>
+                            </fileSets>
+                            <properties>
+                              <property><name>arguments</name></property>
+                              <property><name>yarnInheritsProxyConfigFromMaven</name></property>
+                              <property><name>npmRegistryURL</name></property>
+                              <property><name>skipTests</name></property>
+                              <property><name>testFailureIgnore</name></property>
+                              <property><name>testFailureIgnore</name></property>
+                              <property><name>environmentVariables</name></property>
+                              <property><name>skip</name></property>
+                            </properties>
+                            <ignoredProperties>
+                              <ignore>project</ignore>
+                              <ignore>execution</ignore>
+                              <ignore>session</ignore>
+                              <ignore>repositorySystemSession</ignore>
+                            </ignoredProperties>
                           </inputs>
                           <outputs>
-                              <directories>
-                                  <directory>
-                                      <name>nodeOutputDirectory</name>
-                                      <path>node</path>
-                                  </directory>
-                                  <directory>
-                                      <name>nodeModulesOutputDirectory</name>
-                                      <path>node_modules</path>
-                                  </directory>
-                              </directories>
-                              <cacheableBecause>check should only run when inputs change</cacheableBecause>
-                          </outputs>
+                            <directories>
+                              <directory>
+                                <name>nodeOutputDirectory</name>
+                                <path>node</path>
+                              </directory>
+                              <directory>
+                                <name>nodeModulesOutputDirectory</name>
+                                <path>node_modules</path>
+                              </directory>
+                            </directories>
+                            <cacheableBecause>check should only run when inputs change</cacheableBecause>
+                        </outputs>
                       </execution>
                     </executions>
                   </plugin>
 
-              </plugins>
+                  <plugin>
+                    <groupId>com.github.siom79.japicmp</groupId>
+                    <artifactId>japicmp-maven-plugin</artifactId>
+                    <executions>
+                      <execution>
+                        <id>default</id>
+                        <inputs>
+                          <fileSets>
+                            <fileSet>
+                              <name>projectBuildDir</name>
+                              <normalization>CLASSPATH</normalization>
+                            </fileSet>
+                          </fileSets>
+                          <properties>
+                            <property><name>oldVersion</name></property>
+                            <property><name>oldVersions</name></property>
+                            <property><name>newVersion</name></property>
+                            <property><name>newVersions</name></property>
+                            <property><name>dependencies</name></property>
+                            <property><name>skip</name></property>
+                            <property><name>skipXmlReport</name></property>
+                            <property><name>skipHtmlReport</name></property>
+                            <property><name>breakBuildOnModifications</name></property>
+                            <property><name>breakBuildOnBinaryIncompatibleModifications</name></property>
+                            <property><name>breakBuildOnSourceIncompatibleModifications</name></property>
+                            <property><name>breakBuildBasedOnSemanticVersioning</name></property>
+                            <property><name>breakBuildBasedOnSemanticVersioningForMajorVersionZero</name></property>
+                            <property><name>versionRangeWithProjectVersion</name></property>
+                          </properties>
+                          <ignoredProperties>
+                            <ignore>parameter</ignore>
+                            <ignore>mavenProject</ignore>
+                            <ignore>mojoExecution</ignore>
+                            <ignore>localRepository</ignore>
+                            <ignore>artifactRepositories</ignore>
+                          </ignoredProperties>
+                        </inputs>
+                        <iteratedProperties>
+                          <property>
+                            <name>oldClassPathDependencies</name>
+                            <inputs>
+                              <properties>
+                                <property><name>groupId</name></property>
+                                <property><name>artifactId</name></property>
+                                <property><name>version</name></property>
+                                <property><name>scope</name></property>
+                                <property><name>systemPath</name></property>
+                                <property><name>classifier</name></property>
+                                <property><name>type</name></property>
+                              </properties>
+                            </inputs>
+                          </property>
+                            <property>
+                              <name>newClassPathDependencies</name>
+                              <inputs>
+                                <properties>
+                                  <property><name>groupId</name></property>
+                                  <property><name>artifactId</name></property>
+                                  <property><name>version</name></property>
+                                  <property><name>scope</name></property>
+                                  <property><name>systemPath</name></property>
+                                  <property><name>classifier</name></property>
+                                  <property><name>type</name></property>
+                                </properties>
+                              </inputs>
+                            </property>
+                        </iteratedProperties>
+                        <outputs>
+                          <directories>
+                            <directory>
+                              <name>japiCmpOutputDir</name>
+                              <path>${project.build.directory}/japicmp</path>
+                            </directory>
+                          </directories>
+                          <cacheableBecause>check should only run when inputs change</cacheableBecause>
+                        </outputs>
+                      </execution>
+                    </executions>
+                  </plugin>
+
+                </plugins>
             </gradleEnterprise>
           </configuration>
         </plugin>
