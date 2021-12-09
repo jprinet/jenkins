@@ -545,19 +545,9 @@ THE SOFTWARE.
                         <fileSets>
                           <fileSet>
                             <name>classFilesDirectory</name>
-<!--                            <excludes>-->
-<!--                              <exclude>**/*.stapler</exclude>-->
-<!--                              <exclude>**/*.javadoc</exclude>-->
-<!--                            </excludes>-->
-<!--                            <normalization>CLASSPATH</normalization>-->
                           </fileSet>
                           <fileSet>
                             <name>testClassFilesDirectory</name>
-<!--                            <excludes>-->
-<!--                              <exclude>**/*.stapler</exclude>-->
-<!--                              <exclude>**/*.javadoc</exclude>-->
-<!--                            </excludes>-->
-<!--                            <normalization>CLASSPATH</normalization>-->
                           </fileSet>
                         </fileSets>
                         <properties>
@@ -629,26 +619,15 @@ THE SOFTWARE.
                               <fileSets>
                                   <fileSet>
                                       <name>classFilesDirectory</name>
-                                      <!--                            <excludes>-->
-                                      <!--                              <exclude>**/*.stapler</exclude>-->
-                                      <!--                              <exclude>**/*.javadoc</exclude>-->
-                                      <!--                            </excludes>-->
-                                      <!--                            <normalization>CLASSPATH</normalization>-->
                                   </fileSet>
                                   <fileSet>
                                       <name>testClassFilesDirectory</name>
-                                      <!--                            <excludes>-->
-                                      <!--                              <exclude>**/*.stapler</exclude>-->
-                                      <!--                              <exclude>**/*.javadoc</exclude>-->
-                                      <!--                            </excludes>-->
-                                      <!--                            <normalization>CLASSPATH</normalization>-->
                                   </fileSet>
                               </fileSets>
                               <properties>
                                   <property><name>skip</name></property>
                                   <property><name>xmlOutput</name></property>
                                   <property><name>includeTests</name></property>
-                                  <!--                          <property><name>addSourceDirs</name></property>-->
                                   <property><name>xmlEncoding</name></property>
                                   <property><name>sourceEncoding</name></property>
                                   <property><name>threshold</name></property>
@@ -661,11 +640,6 @@ THE SOFTWARE.
                                   <property><name>nested</name></property>
                                   <property><name>maxRank</name></property>
                                   <property><name>failOnError</name></property>
-                                  <!--                          <property><name>skipEmptyReport</name></property>-->
-                                  <!--                          <property><name>userPrefs</name></property>-->
-                                  <!--                          <property><name>sarifOutput</name></property>-->
-                                  <!--                          <property><name>sarifFullPath</name></property>-->
-                                  <!--                          <property><name>systemPropertyVariables</name></property>-->
                                   <property><name>includeFilterFile</name></property>
                                   <property><name>excludeFilterFile</name></property>
                                   <property><name>excludeBugsFile</name></property>
@@ -673,7 +647,6 @@ THE SOFTWARE.
                                   <property><name>failThreshold</name></property>
                                   <property><name>maxAllowedViolations</name></property>
                                   <property><name>outputEncoding</name></property>
-
                               </properties>
                               <ignoredProperties>
                                   <ignore>debug</ignore>
@@ -685,18 +658,15 @@ THE SOFTWARE.
                                   <ignore>spotbugsXmlOutput</ignore>
                                   <ignore>compileSourceRoots</ignore>
                                   <ignore>testSourceRoots</ignore>
-                                  <!--                          <ignore>remoteRepositories</ignore>-->
                                   <ignore>localRepository</ignore>
                                   <ignore>remoteArtifactRepositories</ignore>
                                   <ignore>pluginArtifacts</ignore>
                                   <ignore>session</ignore>
-                                  <!--                          <ignore>plugins</ignore>-->
                                   <ignore>xmlOutputDirectory</ignore>
                                   <ignore>spotbugsXmlOutputDirectory</ignore>
                                   <ignore>spotbugsXmlOutputFilename</ignore>
                                   <ignore>xrefLocation</ignore>
                                   <ignore>xrefTestLocation</ignore>
-
                                   <ignore>project</ignore>
                               </ignoredProperties>
                           </inputs>
@@ -722,11 +692,149 @@ THE SOFTWARE.
                       </execution>
                   </executions>
                 </plugin>
+
+
+
+                <plugin>
+                  <groupId>com.github.eirslett</groupId>
+                  <artifactId>frontend-maven-plugin</artifactId>
+                  <executions>
+                    <execution>
+                      <id>install node and yarn</id>
+                      <inputs>
+                        <fileSets>
+                          <fileSet>
+                            <name>workingDirectory</name>
+                          </fileSet>
+                          <fileSet>
+                            <name>installDirectory</name>
+                          </fileSet>
+                        </fileSets>
+                        <properties>
+                          <property><name>nodeDownloadRoot</name></property>
+                          <property><name>yarnDownloadRoot</name></property>
+                          <property><name>nodeVersion</name></property>
+                          <property><name>yarnVersion</name></property>
+                          <property><name>serverId</name></property>
+
+                          <property><name>skipTests</name></property>
+                          <property><name>testFailureIgnore</name></property>
+                          <property><name>testFailureIgnore</name></property>
+                          <property><name>environmentVariables</name></property>
+                          <property><name>skip</name></property>
+                        </properties>
+                        <ignoredProperties>
+                          <ignore>project</ignore>
+                          <ignore>execution</ignore>
+                          <ignore>session</ignore>
+                          <ignore>repositorySystemSession</ignore>
+                        </ignoredProperties>
+                      </inputs>
+                      <outputs>
+                        <directories>
+                          <directory>
+                            <name>nodeOutputDirectory</name>
+                            <path>node</path>
+                          </directory>
+                          <directory>
+                            <name>nodeModulesOutputDirectory</name>
+                            <path>node_modules</path>
+                          </directory>
+                        </directories>
+                        <cacheableBecause>check should only run when inputs change</cacheableBecause>
+                      </outputs>
+                    </execution>
+                    <execution>
+                      <id>yarn install</id>
+                        <inputs>
+                          <fileSets>
+                            <fileSet>
+                                <name>workingDirectory</name>
+                            </fileSet>
+                              <fileSet>
+                                  <name>installDirectory</name>
+                              </fileSet>
+                          </fileSets>
+                          <properties>
+                            <property><name>arguments</name></property>
+                            <property><name>yarnInheritsProxyConfigFromMaven</name></property>
+                            <property><name>npmRegistryURL</name></property>
+                            <property><name>skipTests</name></property>
+                            <property><name>testFailureIgnore</name></property>
+                            <property><name>testFailureIgnore</name></property>
+                            <property><name>environmentVariables</name></property>
+                            <property><name>skip</name></property>
+                          </properties>
+                          <ignoredProperties>
+                            <ignore>project</ignore>
+                            <ignore>execution</ignore>
+                            <ignore>session</ignore>
+                            <ignore>repositorySystemSession</ignore>
+                          </ignoredProperties>
+                        </inputs>
+                        <outputs>
+                          <directories>
+                            <directory>
+                                <name>nodeOutputDirectory</name>
+                                <path>node</path>
+                            </directory>
+                              <directory>
+                                  <name>nodeModulesOutputDirectory</name>
+                                  <path>node_modules</path>
+                              </directory>
+                          </directories>
+                          <cacheableBecause>check should only run when inputs change</cacheableBecause>
+                        </outputs>
+                      </execution>
+                      <execution>
+                          <id>yarn build</id>
+                          <inputs>
+                              <fileSets>
+                                  <fileSet>
+                                      <name>workingDirectory</name>
+                                  </fileSet>
+                                  <fileSet>
+                                      <name>installDirectory</name>
+                                  </fileSet>
+                              </fileSets>
+                              <properties>
+                                  <property><name>arguments</name></property>
+                                  <property><name>yarnInheritsProxyConfigFromMaven</name></property>
+                                  <property><name>npmRegistryURL</name></property>
+                                  <property><name>skipTests</name></property>
+                                  <property><name>testFailureIgnore</name></property>
+                                  <property><name>testFailureIgnore</name></property>
+                                  <property><name>environmentVariables</name></property>
+                                  <property><name>skip</name></property>
+                              </properties>
+                              <ignoredProperties>
+                                  <ignore>project</ignore>
+                                  <ignore>execution</ignore>
+                                  <ignore>session</ignore>
+                                  <ignore>repositorySystemSession</ignore>
+                              </ignoredProperties>
+                          </inputs>
+                          <outputs>
+                              <directories>
+                                  <directory>
+                                      <name>nodeOutputDirectory</name>
+                                      <path>node</path>
+                                  </directory>
+                                  <directory>
+                                      <name>nodeModulesOutputDirectory</name>
+                                      <path>node_modules</path>
+                                  </directory>
+                              </directories>
+                              <cacheableBecause>check should only run when inputs change</cacheableBecause>
+                          </outputs>
+                      </execution>
+                    </executions>
+                  </plugin>
+
               </plugins>
             </gradleEnterprise>
           </configuration>
         </plugin>
-
 
       </plugins>
     </pluginManagement>
