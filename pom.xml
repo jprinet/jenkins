@@ -1063,17 +1063,42 @@ THE SOFTWARE.
                           </ignoredProperties>
                         </inputs>
                         <outputs>
-                          <files>
-                            <file>
-                              <!-- spotless and spotbugs have the same lifecycle -->
-                              <name>fakeOutputFile</name>
-                              <path>${project.build.directory}/spotbugs.xml</path>
-                            </file>
-                          </files>
-                          <cacheableBecause>check should only run when inputs change</cacheableBecause>
+                          <cacheableBecause>should only run when inputs change</cacheableBecause>
                         </outputs>
                       </execution>
                     </executions>
+                  </plugin>
+
+                  <plugin>
+                      <groupId>org.kohsuke</groupId>
+                      <artifactId>access-modifier-checker</artifactId>
+                      <executions>
+                          <execution>
+                              <id>default</id>
+                              <inputs>
+                                  <fileSets>
+                                      <fileSet>
+                                          <name>src</name>
+                                          <paths>
+                                              <path>src</path>
+                                          </paths>
+                                          <normalization>CLASSPATH</normalization>
+                                      </fileSet>
+                                  </fileSets>
+                                  <properties>
+                                      <property><name>skip</name></property>
+                                      <property><name>failOnError</name></property>
+                                      <property><name>properties</name></property>
+                                  </properties>
+                                  <ignoredProperties>
+                                      <ignore>project</ignore>
+                                  </ignoredProperties>
+                              </inputs>
+                              <outputs>
+                                  <cacheableBecause>should only run when inputs change</cacheableBecause>
+                              </outputs>
+                          </execution>
+                      </executions>
                   </plugin>
 
                   <plugin>
