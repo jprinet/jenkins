@@ -1022,6 +1022,61 @@ THE SOFTWARE.
                   </plugin>
 
                   <plugin>
+                    <groupId>com.diffplug.spotless</groupId>
+                    <artifactId>spotless-maven-plugin</artifactId>
+                    <executions>
+                      <execution>
+                        <id>default</id>
+                        <inputs>
+                          <fileSets>
+                            <fileSet>
+                              <name>baseDir</name>
+                              <normalization>CLASSPATH</normalization>
+                            </fileSet>
+                          </fileSets>
+                          <properties>
+                            <property><name>goal</name></property>
+                            <property><name>applySkip</name></property>
+                            <property><name>checkSkip</name></property>
+                            <property><name>encoding</name></property>
+                            <property><name>ratchetFrom</name></property>
+                            <property><name>licenseHeader</name></property>
+                            <property><name>formats</name></property>
+                            <property><name>groovy</name></property>
+                            <property><name>scala</name></property>
+                            <property><name>kotlin</name></property>
+                            <property><name>cpp</name></property>
+                            <property><name>typescript</name></property>
+                            <property><name>antlr4</name></property>
+                            <property><name>pom</name></property>
+                            <property><name>sql</name></property>
+                            <property><name>python</name></property>
+                            <property><name>filePatterns</name></property>
+                            <property><name>setLicenseHeaderYearsFromGitHistory</name></property>
+                          </properties>
+                          <ignoredProperties>
+                            <ignore>repositorySystemSession</ignore>
+                            <ignore>repositories</ignore>
+                            <ignore>lineEndings</ignore>
+                            <ignore>java</ignore>
+                            <ignore>buildDir</ignore>
+                          </ignoredProperties>
+                        </inputs>
+                        <outputs>
+                          <files>
+                            <file>
+                              <!-- spotless and spotbugs have the same lifecycle -->
+                              <name>fakeOutputFile</name>
+                              <path>${project.build.directory}/spotbugs.xml</path>
+                            </file>
+                          </files>
+                          <cacheableBecause>check should only run when inputs change</cacheableBecause>
+                        </outputs>
+                      </execution>
+                    </executions>
+                  </plugin>
+
+                  <plugin>
                     <artifactId>maven-surefire-plugin</artifactId>
                     <outputs>
                       <directories>
