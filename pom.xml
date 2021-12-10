@@ -1021,6 +1021,18 @@ THE SOFTWARE.
                       </executions>
                   </plugin>
 
+                  <plugin>
+                    <artifactId>maven-surefire-plugin</artifactId>
+                    <outputs>
+                      <directories>
+                        <directory>
+                          <name>testTmpDir</name>
+                          <path>${project.build.directory}</path>
+                        </directory>
+                      </directories>
+                    </outputs>
+                  </plugin>
+
               </plugins>
             </gradleEnterprise>
           </configuration>
