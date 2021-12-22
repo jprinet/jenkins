@@ -610,7 +610,7 @@ THE SOFTWARE.
                             <path>${project.build.directory}/spotbugsXml.xml</path>
                           </file>
                         </files>
-                        <cacheableBecause>check should only run when inputs change</cacheableBecause>
+                        <cacheableBecause>should run when inputs change</cacheableBecause>
                       </outputs>
                     </execution>
                     <execution>
@@ -686,7 +686,7 @@ THE SOFTWARE.
                             <path>${project.build.directory}/spotbugsXml.xml</path>
                           </file>
                         </files>
-                        <cacheableBecause>check should only run when inputs change</cacheableBecause>
+                        <cacheableBecause>should run when inputs change</cacheableBecause>
                       </outputs>
                     </execution>
                   </executions>
@@ -702,6 +702,10 @@ THE SOFTWARE.
                         <fileSets>
                           <fileSet>
                             <name>workingDirectory</name>
+                            <paths>
+                              <path>src/main</path>
+                            </paths>
+                            <normalization>RELATIVE_PATH</normalization>
                           </fileSet>
                           <fileSet>
                             <name>installDirectory</name>
@@ -737,7 +741,7 @@ THE SOFTWARE.
                             <path>node_modules</path>
                           </directory>
                         </directories>
-                        <cacheableBecause>check should only run when inputs change</cacheableBecause>
+                        <cacheableBecause>should run when inputs change</cacheableBecause>
                       </outputs>
                     </execution>
                     <execution>
@@ -746,6 +750,10 @@ THE SOFTWARE.
                           <fileSets>
                             <fileSet>
                               <name>workingDirectory</name>
+                              <paths>
+                                <path>src/main</path>
+                              </paths>
+                              <normalization>RELATIVE_PATH</normalization>
                             </fileSet>
                               <fileSet>
                                 <name>installDirectory</name>
@@ -779,7 +787,7 @@ THE SOFTWARE.
                                 <path>node_modules</path>
                               </directory>
                           </directories>
-                          <cacheableBecause>check should only run when inputs change</cacheableBecause>
+                          <cacheableBecause>should run when inputs change</cacheableBecause>
                         </outputs>
                       </execution>
                       <execution>
@@ -788,6 +796,10 @@ THE SOFTWARE.
                             <fileSets>
                               <fileSet>
                                 <name>workingDirectory</name>
+                                <paths>
+                                    <path>src/main</path>
+                                </paths>
+                                <normalization>RELATIVE_PATH</normalization>
                               </fileSet>
                               <fileSet>
                                 <name>installDirectory</name>
@@ -821,7 +833,7 @@ THE SOFTWARE.
                                 <path>node_modules</path>
                               </directory>
                             </directories>
-                            <cacheableBecause>check should only run when inputs change</cacheableBecause>
+                            <cacheableBecause>should run when inputs change</cacheableBecause>
                         </outputs>
                       </execution>
                     </executions>
@@ -901,7 +913,7 @@ THE SOFTWARE.
                               <path>${project.build.directory}/japicmp</path>
                             </directory>
                           </directories>
-                          <cacheableBecause>check should only run when inputs change</cacheableBecause>
+                          <cacheableBecause>should run when inputs change</cacheableBecause>
                         </outputs>
                       </execution>
                     </executions>
@@ -914,6 +926,15 @@ THE SOFTWARE.
                       <execution>
                         <id>enforce-banned-dependencies</id>
                           <inputs>
+                            <fileSets>
+                              <fileSet>
+                                <name>sources</name>
+                                  <paths>
+                                    <path>src/main</path>
+                                  </paths>
+                                <normalization>RELATIVE_PATH</normalization>
+                              </fileSet>
+                            </fileSets>
                             <properties>
                               <property><name>commandLineRules</name></property>
                               <property><name>fail</name></property>
@@ -960,7 +981,7 @@ THE SOFTWARE.
                             </property>
                           </nestedProperties>
                           <outputs>
-                            <cacheableBecause>banned dependency check should run when dependencies change</cacheableBecause>
+                            <cacheableBecause>should run when inputs change</cacheableBecause>
                           </outputs>
                         </execution>
                     </executions>
@@ -1015,7 +1036,7 @@ THE SOFTWARE.
                                         <path>${project.build.directory}/classes/META-INF/licenses.html</path>
                                     </file>
                                 </files>
-                                <cacheableBecause>check should only run when inputs change</cacheableBecause>
+                                <cacheableBecause>should run when inputs change</cacheableBecause>
                               </outputs>
                           </execution>
                       </executions>
@@ -1031,7 +1052,10 @@ THE SOFTWARE.
                           <fileSets>
                             <fileSet>
                               <name>baseDir</name>
-                              <normalization>CLASSPATH</normalization>
+                              <paths>
+                                <path>src/main</path>
+                              </paths>
+                              <normalization>RELATIVE_PATH</normalization>
                             </fileSet>
                           </fileSets>
                           <properties>
