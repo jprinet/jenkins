@@ -198,43 +198,33 @@ THE SOFTWARE.
               -->
               <compilerArg>-Xpkginfo:always</compilerArg>
             </compilerArgs>
-<!--            <annotationProcessorPaths>-->
-<!--              <path>-->
-<!--                <groupId>org.jenkins-ci</groupId>-->
-<!--                <artifactId>annotation-indexer</artifactId>-->
-<!--                <version>1.15</version>-->
-<!--              </path>-->
-<!--              <path>-->
-<!--                  <groupId>org.kohsuke.stapler</groupId>-->
-<!--                  <artifactId>stapler</artifactId>-->
-<!--                  <version>1593.v0e838714faae</version>-->
-<!--              </path>-->
-<!--              <path>-->
-<!--                <groupId>org.kohsuke</groupId>-->
-<!--                <artifactId>windows-package-checker</artifactId>-->
-<!--                <version>1.2</version>-->
-<!--              </path>-->
-<!--              <path>-->
-<!--                <groupId>org.kohsuke.metainf-services</groupId>-->
-<!--                <artifactId>metainf-services</artifactId>-->
-<!--                <version>1.8</version>-->
-<!--              </path>-->
-<!--              <path>-->
-<!--                <groupId>net.java.sezpoz</groupId>-->
-<!--                <artifactId>sezpoz</artifactId>-->
-<!--                <version>1.13</version>-->
-<!--              </path>-->
-<!--              <path>-->
-<!--                <groupId>org.openjdk.jmh</groupId>-->
-<!--                <artifactId>jmh-generator-annprocess</artifactId>-->
-<!--                <version>1.33</version>-->
-<!--              </path>-->
-<!--              <path>-->
-<!--                  <groupId>org.jenkins-ci.main</groupId>-->
-<!--                  <artifactId>jenkins-core</artifactId>-->
-<!--                  <version>${project.version}</version>-->
-<!--              </path>-->
-<!--            </annotationProcessorPaths>-->
+            <annotationProcessorPaths>
+              <path>
+                  <groupId>org.kohsuke.stapler</groupId>
+                  <artifactId>stapler</artifactId>
+                  <version>1593.v0e838714faae</version>
+              </path>
+              <path>
+                <groupId>org.kohsuke</groupId>
+                <artifactId>windows-package-checker</artifactId>
+                <version>1.2</version>
+              </path>
+              <path>
+                <groupId>org.kohsuke.metainf-services</groupId>
+                <artifactId>metainf-services</artifactId>
+                <version>1.8</version>
+              </path>
+              <path>
+                <groupId>net.java.sezpoz</groupId>
+                <artifactId>sezpoz</artifactId>
+                <version>1.13</version>
+              </path>
+              <path>
+                <groupId>org.openjdk.jmh</groupId>
+                <artifactId>jmh-generator-annprocess</artifactId>
+                <version>1.33</version>
+              </path>
+            </annotationProcessorPaths>
           </configuration>
         </plugin>
         <plugin>
