@@ -863,6 +863,98 @@ THE SOFTWARE.
                             <cacheableBecause>should run when inputs change</cacheableBecause>
                         </outputs>
                       </execution>
+                      <execution>
+                          <id>yarn lint</id>
+                          <inputs>
+                              <fileSets>
+                                  <fileSet>
+                                      <name>workingDirectory</name>
+                                      <paths>
+                                          <path>src/main</path>
+                                      </paths>
+                                      <normalization>RELATIVE_PATH</normalization>
+                                  </fileSet>
+                                  <fileSet>
+                                      <name>installDirectory</name>
+                                  </fileSet>
+                              </fileSets>
+                              <properties>
+                                  <property><name>arguments</name></property>
+                                  <property><name>yarnInheritsProxyConfigFromMaven</name></property>
+                                  <property><name>npmRegistryURL</name></property>
+                                  <property><name>skipTests</name></property>
+                                  <property><name>testFailureIgnore</name></property>
+                                  <property><name>testFailureIgnore</name></property>
+                                  <property><name>environmentVariables</name></property>
+                                  <property><name>skip</name></property>
+                              </properties>
+                              <ignoredProperties>
+                                  <ignore>project</ignore>
+                                  <ignore>execution</ignore>
+                                  <ignore>session</ignore>
+                                  <ignore>repositorySystemSession</ignore>
+                              </ignoredProperties>
+                          </inputs>
+                          <outputs>
+                              <directories>
+                                  <directory>
+                                      <name>nodeOutputDirectory</name>
+                                      <path>node</path>
+                                  </directory>
+                                  <directory>
+                                      <name>nodeModulesOutputDirectory</name>
+                                      <path>node_modules</path>
+                                  </directory>
+                              </directories>
+                              <cacheableBecause>should run when inputs change</cacheableBecause>
+                          </outputs>
+                      </execution>
+                      <execution>
+                          <id>yarn test</id>
+                          <inputs>
+                              <fileSets>
+                                  <fileSet>
+                                      <name>workingDirectory</name>
+                                      <paths>
+                                          <path>src/main</path>
+                                      </paths>
+                                      <normalization>RELATIVE_PATH</normalization>
+                                  </fileSet>
+                                  <fileSet>
+                                      <name>installDirectory</name>
+                                  </fileSet>
+                              </fileSets>
+                              <properties>
+                                  <property><name>arguments</name></property>
+                                  <property><name>yarnInheritsProxyConfigFromMaven</name></property>
+                                  <property><name>npmRegistryURL</name></property>
+                                  <property><name>skipTests</name></property>
+                                  <property><name>testFailureIgnore</name></property>
+                                  <property><name>testFailureIgnore</name></property>
+                                  <property><name>environmentVariables</name></property>
+                                  <property><name>skip</name></property>
+                              </properties>
+                              <ignoredProperties>
+                                  <ignore>project</ignore>
+                                  <ignore>execution</ignore>
+                                  <ignore>session</ignore>
+                                  <ignore>repositorySystemSession</ignore>
+                              </ignoredProperties>
+                          </inputs>
+                          <outputs>
+                              <directories>
+                                  <directory>
+                                      <name>nodeOutputDirectory</name>
+                                      <path>node</path>
+                                  </directory>
+                                  <directory>
+                                      <name>nodeModulesOutputDirectory</name>
+                                      <path>node_modules</path>
+                                  </directory>
+                              </directories>
+                              <cacheableBecause>should run when inputs change</cacheableBecause>
+                          </outputs>
+                      </execution>
                     </executions>
                   </plugin>
 
